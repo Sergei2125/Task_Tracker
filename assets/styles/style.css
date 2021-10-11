@@ -1,0 +1,19 @@
+.wrapper {
+  min-height: calc(100vh - 15px);
+  margin: 15px auto 0;
+}
+
+.darkBackground {
+  background: #656262 !important;
+  color: antiquewhite;
+}
+.darkTitle {
+  background: #836d6d !important;
+}
+.textTask {
+  background-color: blue !important;
+}
+.btnDark {
+  background-color: rgb(93, 48, 112) !important;
+  color: rgb(78, 170, 139) !important;
+}
