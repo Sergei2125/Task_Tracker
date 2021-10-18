@@ -2,18 +2,30 @@
   min-height: calc(100vh - 15px);
   margin: 15px auto 0;
 }
-
 .darkBackground {
-  background: #656262 !important;
-  color: antiquewhite;
+  background: #021c1e !important;
+  color: #fff !important;
+}
+.darkModal {
+  background: rgb(97, 96, 96) !important;
+  color: #fff !important;
 }
 .darkTitle {
-  background: #836d6d !important;
+  background: #2c7873 !important;
 }
-.textTask {
-  background-color: blue !important;
+.darkTask {
+  color: #fff !important;
+  border: 1px solid rgb(153, 153, 153) !important;
 }
-.btnDark {
-  background-color: rgb(93, 48, 112) !important;
-  color: rgb(78, 170, 139) !important;
+.darkForm {
+  border: 1px solid #2c7873 !important;
+}
+.darkComplete {
+  background: #4c44cf;
+}
+.darkEdit {
+  background: #1e8cb0;
+}
+.darkDlt {
+  background: #e953da;
 }
