@@ -2,8 +2,34 @@
   min-height: calc(100vh - 15px);
   margin: 15px auto 0;
 }
-.darkBackground {
-  background: #021c1e !important;
+.show {
+  display: block;
+}
+.dark {
+  background: #0d0330 !important;
+  color: #fff;
+}
+.dark .modal-content,
+.dark .dropdown-menu,
+.dark .close {
+  background: rgb(97, 96, 96) !important;
+  color: #fff !important;
+}
+.dark .dropdown-menu {
+  background: rgb(97, 96, 96) !important;
+  color: #fff !important;
+}
+.dark .navbar {
+  background: #2c7873 !important;
+}
+.dark .btn-menu {
+  background: rgb(186, 188, 189) !important;
+  color: black;
+}
+.dark {
+}
+/* .whiteBackground {
+  background: rgb(17, 24, 121) !important;
   color: #fff !important;
 }
 .darkModal {
@@ -19,13 +45,44 @@
 }
 .darkForm {
   border: 1px solid #2c7873 !important;
-}
-.darkComplete {
+} */
+.dark .btn-success {
   background: #4c44cf;
 }
-.darkEdit {
+.dark btn-info {
   background: #1e8cb0;
 }
-.darkDlt {
+.dark .btn-danger {
   background: #e953da;
+}
+.dark .btn-success:hover,
+.dark btn-info:hover,
+.dark .btn-danger:hover {
+  opacity: 0.6;
+}
+.dark .btn-primary {
+  background: #4c44cf;
+}
+
+.low {
+  background-color: #a1d6e2;
+}
+.medium {
+  background-color: #bcbabe;
+}
+.high {
+  background-color: #1995ad;
+}
+.dark .low {
+  background-color: #6fb98f;
+}
+.dark .medium {
+  background-color: #2c7873;
+}
+.dark .high {
+  background-color: #004445;
+}
+
+.modal-open {
+  overflow: hidden;
 }
