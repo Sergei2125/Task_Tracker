@@ -1,4 +1,4 @@
-import { activeTask, complitedTask } from "./script.js";
+import { activeTask, completedTask } from "./script.js";
 
 const calcNumbersTask = (toDoTask) => {
   let numberCompletedTask = 0;
@@ -9,7 +9,7 @@ const calcNumbersTask = (toDoTask) => {
     return elem.status;
   }).length;
   activeTask.innerHTML = `ToDo (${numberTodoTask})`;
-  complitedTask.innerHTML = `Comleted (${numberCompletedTask})`;
+  completedTask.innerHTML = `Completed (${numberCompletedTask})`;
 };
 
 export default calcNumbersTask;

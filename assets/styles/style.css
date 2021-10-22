@@ -28,24 +28,6 @@
 }
 .dark {
 }
-/* .whiteBackground {
-  background: rgb(17, 24, 121) !important;
-  color: #fff !important;
-}
-.darkModal {
-  background: rgb(97, 96, 96) !important;
-  color: #fff !important;
-}
-.darkTitle {
-  background: #2c7873 !important;
-}
-.darkTask {
-  color: #fff !important;
-  border: 1px solid rgb(153, 153, 153) !important;
-}
-.darkForm {
-  border: 1px solid #2c7873 !important;
-} */
 .dark .btn-success {
   background: #4c44cf;
 }

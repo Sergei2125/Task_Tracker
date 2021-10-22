@@ -2,12 +2,17 @@ import sortItemByTime from "./sortItemByTime.js";
 import createTaskList from "./createTaskList.js";
 import createNewTask from "./createNewTask.js";
 import showHideModal from "./showHideModal.js";
+import { deleteTask, changeStatusTask, editTask } from "./buttonTaskActions.js";
 import {
   updateTaskFromLocalStorage,
   updateThemeFromLocalStorage,
 } from "./updateFromLocalStorage.js";
 
-import { showButtonMenu, selectedIndex } from "./showButtonMenu.js";
+import {
+  createButtonMenu,
+  selectedIndex,
+  selectedId,
+} from "./createButtonMenu.js";
 
 const modal = document.querySelector("#exampleModal");
 const form = document.querySelector("form");
@@ -20,7 +25,7 @@ const dropdownMenuColor = document.querySelector(".dropdown-menu");
 const taskList = document.querySelector(".col-10");
 const buttonAddTask = document.querySelector("#addTask");
 const activeTask = document.querySelector(".my-1");
-const complitedTask = document.querySelector(".my-2");
+const completedTask = document.querySelector(".my-2");
 const priorityLow = document.querySelector("#Low");
 const priorityMedium = document.querySelector("#Medium");
 const priorityHigh = document.querySelector("#High");
@@ -74,13 +79,13 @@ form.addEventListener("submit", (e) => {
 // sort Tasks
 
 buttonIncreaseSort.addEventListener("click", () => {
-  toDoTask = sortItemByTime(toDoTask);
-  createTaskList(toDoTask);
+  sortValueAscending = true;
+  sortItemByTime(toDoTask);
 });
 
 buttonReduceSort.addEventListener("click", () => {
-  toDoTask = sortItemByTime(toDoTask).reverse();
-  createTaskList(toDoTask);
+  sortValueAscending = false;
+  sortItemByTime(toDoTask);
 });
 
 // open/close colorMenu
@@ -109,7 +114,7 @@ modal.addEventListener("click", (e) => {
 taskList.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-menu")) {
     const taskTarget = e.target.closest("li");
-    showButtonMenu(taskTarget);
+    createButtonMenu(taskTarget);
   }
 });
 
@@ -121,11 +126,31 @@ inputChangeColor.addEventListener("click", () => {
   localStorage.setItem("themeOfApp", valueOfTheme);
 });
 
+// task actions
+
+document.addEventListener("click", (e) => {
+  if (e.target.matches(".btn-success")) {
+    changeStatusTask(selectedIndex);
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target.matches(".btn-info")) {
+    editTask(selectedIndex, selectedId);
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target.matches(".btn-danger")) {
+    deleteTask(selectedIndex);
+  }
+});
+
 export {
   darkTheme,
   toDoTask,
   activeTask,
-  complitedTask,
+  completedTask,
   modal,
   inputText,
   inputTitle,
@@ -133,4 +158,5 @@ export {
   buttonAddLabel,
   inputChangeColor,
   body,
+  sortValueAscending,
 };
