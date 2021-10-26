@@ -1,5 +1,5 @@
 import calcNumbersTask from "./calcNumbersTask.js";
-import createTaskHtml from "./createTaskHtml.js";
+import addTaskToPage from "./addTaskToPage.js";
 
 const clearCurrentTasksList = () => {
   const currentTask = document.querySelectorAll(".list-group li");
@@ -15,7 +15,7 @@ const updateLocalStorage = (toDoTask) => {
 
 const createTaskList = (toDoTask) => {
   clearCurrentTasksList();
-  createTaskHtml(toDoTask);
+  addTaskToPage(toDoTask);
   calcNumbersTask(toDoTask);
   updateLocalStorage(toDoTask);
 };

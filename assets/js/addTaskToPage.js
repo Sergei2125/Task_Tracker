@@ -3,7 +3,7 @@ import { sortValueAscending } from "./script.js";
 const activeTaskList = document.querySelector("#currentTasks");
 const completedTaskList = document.querySelector("#completedTasks");
 
-const createTasksHtml = (toDoTask) => {
+const addTaskToPage = (toDoTask) => {
   toDoTask.map((task) => {
     let colorTaskStyle = task.priority.toLowerCase();
 
@@ -43,7 +43,7 @@ const createTasksHtml = (toDoTask) => {
 
     taskItem.innerHTML = taskContent;
 
-    if (task.status) {
+    if (task.inProgress) {
       sortValueAscending
         ? activeTaskList.append(taskItem)
         : activeTaskList.prepend(taskItem);
@@ -55,4 +55,4 @@ const createTasksHtml = (toDoTask) => {
   });
 };
 
-export default createTasksHtml;
+export default addTaskToPage;

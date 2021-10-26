@@ -9,7 +9,7 @@ const updateTaskFromLocalStorage = (data) => {
 
   return [
     {
-      status: true,
+      inProgress: true,
       title: "Lesson 1",
       text: "Exercise 1",
       priority: "Low",
@@ -17,7 +17,7 @@ const updateTaskFromLocalStorage = (data) => {
       date: "23:15 21.10.2021",
     },
     {
-      status: true,
+      inProgress: true,
       title: "Lesson 2",
       text: "Exercise 2",
       priority: "Medium",
@@ -25,7 +25,7 @@ const updateTaskFromLocalStorage = (data) => {
       date: "23:16 21.10.2021",
     },
     {
-      status: true,
+      inProgress: true,
       title: "Lesson 3",
       text: "Exercise 3",
       priority: "High",

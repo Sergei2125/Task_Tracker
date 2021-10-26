@@ -1,5 +1,5 @@
 import createTaskList from "./createTaskList.js";
-import showHideModal from "./showHideModal.js";
+import showModal from "./showModal.js";
 
 import {
   toDoTask,
@@ -8,19 +8,16 @@ import {
   inputTitle,
   ModalLabel,
   buttonAddLabel,
-  darkTheme,
 } from "./script.js";
 
 // task function
 
 const editTask = (index, id) => {
-  document.querySelector(".selected").remove();
-
-  showHideModal(modal);
+  showModal(modal);
 
   modal.setAttribute("edit", `${id}`);
-  ModalLabel.innerHTML = "Edit task";
-  buttonAddLabel.innerHTML = "Edit task";
+  ModalLabel.textContent = "Edit task";
+  buttonAddLabel.textContent = "Edit task";
   inputText.value = toDoTask[index].text;
   inputTitle.value = toDoTask[index].title;
   const priority = toDoTask[index].priority;
@@ -28,14 +25,14 @@ const editTask = (index, id) => {
 };
 
 const changeStatusTask = (index) => {
-  toDoTask[index].status = !toDoTask[index].status;
-  createTaskList(toDoTask, darkTheme);
+  toDoTask[index].inProgress = !toDoTask[index].inProgress;
+  createTaskList(toDoTask);
 };
 
 const deleteTask = (index) => {
   const numberOfDeleted = 1;
   toDoTask.splice(index, numberOfDeleted);
-  createTaskList(toDoTask, darkTheme);
+  createTaskList(toDoTask);
 };
 
 export { deleteTask, changeStatusTask, editTask };

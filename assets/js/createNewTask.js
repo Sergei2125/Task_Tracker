@@ -11,7 +11,7 @@ const createNewTask = (inputTitle, inputText, inputPriority) => {
   }.${currentDate.getFullYear()}`;
 
   return {
-    status: true,
+    inProgress: true,
     title: inputTitle,
     text: inputText,
     priority: inputPriority,

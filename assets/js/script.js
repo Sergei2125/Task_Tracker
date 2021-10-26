@@ -1,7 +1,7 @@
 import sortItemByTime from "./sortItemByTime.js";
 import createTaskList from "./createTaskList.js";
 import createNewTask from "./createNewTask.js";
-import showHideModal from "./showHideModal.js";
+import showModal from "./showModal.js";
 import { deleteTask, changeStatusTask, editTask } from "./buttonTaskActions.js";
 import {
   updateTaskFromLocalStorage,
@@ -27,8 +27,6 @@ const buttonAddTask = document.querySelector("#addTask");
 const activeTask = document.querySelector(".my-1");
 const completedTask = document.querySelector(".my-2");
 const priorityLow = document.querySelector("#Low");
-const priorityMedium = document.querySelector("#Medium");
-const priorityHigh = document.querySelector("#High");
 const ModalLabel = document.querySelector("#exampleModalLabel");
 const buttonAddLabel = document.querySelector(".createTask");
 const inputChangeColor = document.querySelector("#customSwitch1");
@@ -49,12 +47,13 @@ createTaskList(toDoTask);
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  let inputPriority;
 
-  let inputPriority = priorityLow.value;
-  if (priorityMedium.checked) {
-    inputPriority = priorityMedium.value;
-  } else if (priorityHigh.checked) {
-    inputPriority = priorityHigh.value;
+  const formDataArray = form.elements;
+  for (let i = 0; i < formDataArray.length; i++) {
+    if (formDataArray[i].checked) {
+      inputPriority = formDataArray[i].value;
+    }
   }
 
   if (modal.hasAttribute("edit")) {
@@ -73,7 +72,7 @@ form.addEventListener("submit", (e) => {
   }
 
   createTaskList(toDoTask);
-  showHideModal(modal);
+  showModal(modal);
 });
 
 // sort Tasks
@@ -96,16 +95,17 @@ settingMenu.addEventListener("click", () => {
 
 // open/close Modal
 buttonAddTask.addEventListener("click", () => {
-  ModalLabel.innerHTML = "Add task";
-  buttonAddLabel.innerHTML = "Add task";
+  ModalLabel.textContent = "Add task";
+  buttonAddLabel.textContent = "Add task";
   form.reset();
   priorityLow.checked = true;
-  showHideModal(modal);
+  showModal(modal);
 });
 
 modal.addEventListener("click", (e) => {
   if (e.target.hasAttribute("data-dismiss")) {
-    showHideModal(modal);
+    showModal(modal);
+    modal.removeAttribute("edit");
   }
 });
 
@@ -115,6 +115,12 @@ taskList.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-menu")) {
     const taskTarget = e.target.closest("li");
     createButtonMenu(taskTarget);
+  }
+});
+body.addEventListener("click", (e) => {
+  let dropdownMenuSelected = document.querySelector(".selected");
+  if (!e.target.classList.contains("btn-menu") && dropdownMenuSelected) {
+    dropdownMenuSelected.remove();
   }
 });
 
@@ -129,19 +135,19 @@ inputChangeColor.addEventListener("click", () => {
 // task actions
 
 document.addEventListener("click", (e) => {
-  if (e.target.matches(".btn-success")) {
+  if (e.target.classList.contains("btn-success")) {
     changeStatusTask(selectedIndex);
   }
 });
 
 document.addEventListener("click", (e) => {
-  if (e.target.matches(".btn-info")) {
+  if (e.target.classList.contains("btn-info")) {
     editTask(selectedIndex, selectedId);
   }
 });
 
 document.addEventListener("click", (e) => {
-  if (e.target.matches(".btn-danger")) {
+  if (e.target.classList.contains("btn-danger")) {
     deleteTask(selectedIndex);
   }
 });

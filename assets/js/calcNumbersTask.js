@@ -3,13 +3,13 @@ import { activeTask, completedTask } from "./script.js";
 const calcNumbersTask = (toDoTask) => {
   let numberCompletedTask = 0;
   let numberTodoTask = toDoTask.filter((elem) => {
-    if (!elem.status) {
+    if (!elem.inProgress) {
       numberCompletedTask++;
     }
-    return elem.status;
+    return elem.inProgress;
   }).length;
-  activeTask.innerHTML = `ToDo (${numberTodoTask})`;
-  completedTask.innerHTML = `Completed (${numberCompletedTask})`;
+  activeTask.textContent = `ToDo (${numberTodoTask})`;
+  completedTask.textContent = `Completed (${numberCompletedTask})`;
 };
 
 export default calcNumbersTask;

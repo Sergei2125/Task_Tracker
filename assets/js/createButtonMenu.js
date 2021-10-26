@@ -1,58 +1,57 @@
-import { toDoTask, darkTheme } from "./script.js";
+import { toDoTask } from "./script.js";
 
-const buttonForActiveTask = `<button type="button" class="btn btn-success w-100  ">
-Complete
-</button>
+const buttonComplete = `
 <button type="button" class="btn btn-info w-100 my-2">
 Edit
 </button>
-<button type="button" class="btn btn-danger w-100">
+<button type="button" class="btn btn-danger w-100" my-2>
 Delete
 </button>`;
 
-const buttonForCompletedTask = `<button type="button" class="btn btn-success w-100 " >
-Uncomplete
-</button>
-<button type="button" class="btn btn-danger w-100 my-2">
+const buttonUnComplete = `
+<button type="button" class="btn btn-danger w-100 my-2" >
 Delete
 </button>`;
 
-const initCurrentIndexInArray = (currentId) => {
+let selectedId;
+let selectedIndex;
+
+const defineCurrentIndexInArray = (currentId) => {
   return toDoTask.findIndex((elem) => {
     return elem.id === +currentId;
   });
 };
 
-let selectedId;
-let selectedIndex;
+const createButtonContent = (taskStatus) => {
+  const menuElement = document.createElement("div");
+  menuElement.classList.add(
+    "dropdown-menu",
+    "p-2",
+    "flex-column",
+    "show",
+    "selected"
+  );
+  menuElement.innerHTML = `<button type="button" class="btn btn-success w-100 ">
+  ${taskStatus ? "Complete" : "Uncomplete"}
+  </button>
+    ${taskStatus ? buttonComplete : buttonUnComplete}`;
+
+  return menuElement;
+};
 
 // selected id and index of selected task
 
 const createButtonMenu = (element) => {
   selectedId = element.getAttribute("id");
 
-  selectedIndex = initCurrentIndexInArray(selectedId);
+  selectedIndex = defineCurrentIndexInArray(selectedId);
 
   if (document.querySelector(".selected")) {
     document.querySelector(".selected").remove();
-  } else {
-    const menuElement = document.createElement("div");
-    menuElement.classList.add(
-      "dropdown-menu",
-      "p-2",
-      "flex-column",
-      "show",
-      "selected",
-      `${darkTheme ? "darkModal" : null}`
-    );
-
-    if (toDoTask[selectedIndex].status) {
-      menuElement.innerHTML = buttonForActiveTask;
-    } else {
-      menuElement.innerHTML = buttonForCompletedTask;
-    }
-    element.lastElementChild.appendChild(menuElement);
   }
+  const buttonMenu = createButtonContent(toDoTask[selectedIndex].inProgress);
+
+  element.lastElementChild.appendChild(buttonMenu);
 };
 
 export { createButtonMenu, selectedIndex, selectedId };
